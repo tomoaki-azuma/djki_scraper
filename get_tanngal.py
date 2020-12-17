@@ -71,4 +71,3 @@ for num in all_num:
     with open('final_result.csv', 'a', encoding='utf-8', newline='') as f:
         dataWriter = csv.writer(f)
         dataWriter.writerow(result)
-    break
