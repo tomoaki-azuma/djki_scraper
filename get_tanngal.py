@@ -68,7 +68,6 @@ for num in all_num:
     pemberian = get_tanngal_pemberian(num)
     result = [num] + data[num]
     result[2] = pemberian
-    print(result)
     with open('final_result.csv', 'a', encoding='utf-8', newline='') as f:
         dataWriter = csv.writer(f)
         dataWriter.writerow(result)
