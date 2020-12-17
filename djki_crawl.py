@@ -84,7 +84,7 @@ with open('number' + str(num) + '.csv', 'r') as f:
                 # # 登録日
                 date = dom.xpath('/html/body/div[4]/div/div[1]/div[1]/div[2]/span[2]')
                 if date:
-                    result['TANGGAL PEMEBERIAN'] = date[0].text.strip()
+                    result['TANGGAL PEMBERIAN'] = date[0].text.strip()
 
                 # # Status
                 status = dom.xpath("//span[@class='status']")
@@ -98,17 +98,24 @@ with open('number' + str(num) + '.csv', 'r') as f:
                     ipc_list.append(ipc.get_text())
                 result['IPC'] = ','.join(ipc_list)
                 
+                print(result)
+                break
                 csv_result.append(csv_ary(result))
 
-                if len(csv_result) == 50:
-                    with open('out'+ str(num) + '.csv', 'a', encoding='utf-8', newline='') as f:
-                        dataWriter = csv.writer(f)
-                        dataWriter.writerow(items)
-                        dataWriter.writerows(csv_result)
-                    csv_result = []
+                # if len(csv_result) == 50:
+                #     with open('out'+ str(num) + '.csv', 'a', encoding='utf-8', newline='') as f:
+                #         dataWriter = csv.writer(f)
+                #         dataWriter.writerow(items)
+                #         dataWriter.writerows(csv_result)
+                #     csv_result = []
+             
             
         except:
             with open('djki_error'+ str(num) + '.log', mode='a') as f:
                 f.write(line[0] +'\n')
 
+    # with open('out'+ str(num) + '.csv', 'a', encoding='utf-8', newline='') as f:
+    #             dataWriter = csv.writer(f)
+    #             dataWriter.writerow(items)
+    #             dataWriter.writerows(csv_result)
 
