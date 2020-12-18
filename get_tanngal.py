@@ -52,14 +52,16 @@ def get_tanngal_pemberian(num):
     except:
         return ''
 
+n = int(input())
+
 all_num = []
-with open('all_number.csv', 'r') as f:
+with open('all_number' + str(n) + '.csv', 'r') as f:
     reader = csv.reader(f)
     for line in reader:
         all_num.append(line[0])
 
 data = {}
-with open('get_all_data.csv', 'r') as f:
+with open('all_data.csv', 'r') as f:
     reader = csv.reader(f)
     for line in reader:
         data[line[0]] = line[1:]
@@ -68,6 +70,6 @@ for num in all_num:
     pemberian = get_tanngal_pemberian(num)
     result = [num] + data[num]
     result[2] = pemberian
-    with open('final_result.csv', 'a', encoding='utf-8', newline='') as f:
+    with open('final_result_' + str(n) + '.csv', 'a', encoding='utf-8', newline='') as f:
         dataWriter = csv.writer(f)
         dataWriter.writerow(result)
